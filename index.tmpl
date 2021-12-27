@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='utf-8'>
+    <meta name='description' content="Memoir">
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <link rel="shortcut icon" type="image/jpg" href="media/icon/logo-pack.jpg"/>
+    <title>Tavern</title>
+    <style>
+@font-face { font-family: "redact"; src: url("media/fonts/Redaction_50-Regular.woff2") format("woff2"); }
+html { font-size: 0.5em; font-family: "redact"}
+footer { font-size: 1.5rem; text-align: center;}
+img { max-height: 80vh; max-width: 80vw; margin: 50px 0 }		
+img:hover + figcaption { display: block; }
+figcaption {
+  display: none;
+  font-size: 1.5rem;
+  letter-spacing: .05em;
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  width: 22rem;
+  border: 2px solid;
+  text-align: center;
+  padding: 1em;
+  background: white;
+}
+@media only screen and (max-width: 767px) {
+  footer { font-size: 1.2rem}
+  figcaption { font-size: 1.2rem; top: 1rem; right: 1rem; width: 17rem; }
+}
+    </style>
+  </head>
+  <body>
+    <center>
+      {{range .}}
+      <figure>
+        <img class="lazy" data-src="./media/large/{{.Key}}.jpg"/>
+        {{if or .Date .Caption}}
+        <figcaption> {{.Date}}<br>{{.Caption}} </figcaption>
+        {{end}}
+      </figure>
+      {{end}}
+    </center>
+    <footer>nnnyykk©2021</footer>
+    <script src="https://cdn.jsdelivr.net/npm/intersection-observer@0.7.0/intersection-observer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-lazyload@17.5.0/dist/lazyload.min.js"></script>
+    <script> new LazyLoad(); </script>
+  </body>
+</html>
